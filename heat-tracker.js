@@ -197,6 +197,59 @@ function isRelevant(nodePath, context) {
   return keywords.some(keyword => lowerContext.includes(keyword));
 }
 
+// ========== v2.1 语义复活功能 (原型) ==========
+
+/**
+ * 生成简易记忆指纹 (v2.1-alpha 模拟版)
+ * 注：生产环境请替换为 nomic-embed-text 等真实嵌入模型
+ * @param {string} content - 节点内容
+ * @returns {number[]} - 简易词频向量 (模拟)
+ */
+function generateFingerprint(content) {
+  if (!content) return [];
+  const words = content.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+  const vocab = [...new Set(words)].slice(0, 50); // 取前 50 个唯一词作为简易向量
+  const vector = vocab.map(word => words.filter(w => w === word).length);
+  return vector;
+}
+
+/**
+ * 计算余弦相似度
+ * @param {number[]} vecA - 向量 A
+ * @param {number[]} vecB - 向量 B
+ * @returns {number} - 相似度 (0-1)
+ */
+function calculateSimilarity(vecA, vecB) {
+  if (!vecA || !vecB || vecA.length === 0 || vecB.length === 0) return 0;
+  const len = Math.min(vecA.length, vecB.length);
+  let dotProduct = 0, normA = 0, normB = 0;
+  for (let i = 0; i < len; i++) {
+    dotProduct += vecA[i] * vecB[i];
+    normA += vecA[i] * vecA[i];
+    normB += vecB[i] * vecB[i];
+  }
+  if (normA === 0 || normB === 0) return 0;
+  return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
+}
+
+/**
+ * 检查是否需要复活归档记忆
+ * @param {string} currentContext - 当前上下文
+ * @param {Object} archiveMetadata - 归档元数据
+ * @returns {Array} - 待复活的节点列表
+ */
+function checkResurrection(currentContext, archiveMetadata) {
+  const contextVec = generateFingerprint(currentContext);
+  const toResurrect = [];
+  Object.entries(archiveMetadata).forEach(([nodePath, meta]) => {
+    const similarity = calculateSimilarity(contextVec, meta.fingerprint || []);
+    if (similarity > 0.85) {
+      toResurrect.push({ path: nodePath, similarity, originalHeat: meta.heat });
+    }
+  });
+  return toResurrect.sort((a, b) => b.similarity - a.similarity);
+}
+
 // 导出函数
 module.exports = {
   getNodeHeat,
@@ -206,6 +259,10 @@ module.exports = {
   detectSparks,
   getHeatLevel,
   loadHeatLog,
+  // v2.1 新增导出
+  generateFingerprint,
+  calculateSimilarity,
+  checkResurrection,
   HEAT_HIGH,
   HEAT_MEDIUM,
   DECAY_RATE
