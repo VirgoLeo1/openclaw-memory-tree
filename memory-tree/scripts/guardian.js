@@ -45,12 +45,13 @@ function syncGit() {
     console.log('\n📡 正在检查 Git 状态...');
     
     // 检查状态
-    const status = execSync('git status --porcelain', { encoding: 'utf8' });
+    const status = execSync('git status --porcelain', { encoding: 'utf8' }).trim();
     
-    if (status.trim()) {
+    if (status) {
       console.log('📝 发现变更，正在提交...');
       execSync('git add .');
-      execSync(`git commit -m "auto: [Guardian] 自动同步 - ${new Date().toISOString()}"`);
+      const timestamp = new Date().toISOString().replace('T', ' ').substring(0, 19);
+      execSync(`git commit -m "auto: [Guardian] 自动同步 - ${timestamp}"`);
       console.log('📤 正在推送到 GitHub...');
       execSync('git push -u origin master');
       console.log('✅ 推送成功！');
@@ -58,10 +59,13 @@ function syncGit() {
       console.log('✅ 无变更，工作区干净');
     }
   } catch (error) {
-    if (error.message.includes('nothing to commit')) {
+    const msg = error.message;
+    if (msg.includes('nothing to commit') || msg.includes('no changes added')) {
       console.log('✅ 无变更需要提交');
+    } else if (msg.includes('Aborting commit')) {
+      console.log('⚠️ 提交中止（可能是空提交）');
     } else {
-      console.error('❌ 同步失败:', error.message);
+      console.error('❌ 同步失败:', msg.split('\n')[0]);
     }
   }
 }
