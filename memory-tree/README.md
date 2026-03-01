@@ -1,25 +1,18 @@
-# 🌳 OpenClaw Memory Tree
+<p align="center">
+  <h1 align="center">🌳 VirgoLiant Memory Tree</h1>
+  <p align="center">
+    An intelligent, self-evolving memory system powered by ChromaDB and OpenClaw.
+    <br>
+    <strong>让记忆不再是存储，而是生长。</strong>
+  </p>
+</p>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-3.0-red.svg)](https://github.com/VirgoLeo1/openclaw-memory-tree)
-[![ChromaDB](https://img.shields.io/badge/vector-ChromaDB-blue.svg)](https://www.trychroma.com/)
-
-> **让记忆不再是存储，而是生长。**  
-> *Memory is not just storage — it's growth.*
-
-**An intelligent, self-evolving memory system powered by ChromaDB and OpenClaw.**  
-一个由 ChromaDB 和 OpenClaw 驱动的智能、自演化记忆系统。
-
----
-
-## 🌐 Navigation / 导航
-
-| **English** | **中文** |
-| :--- | :--- |
-| [🚀 Overview](#-english-version) | [🚀 概述](#-中文说明) |
-| [📦 Installation](#-installation) | [📦 安装指南](#-安装指南) |
-| [🔥 Core Concepts](#-core-concepts) | [🔥 核心概念](#-核心概念) |
-| [🏗️ Architecture](#-project-structure) | [🏗️ 项目结构](#-项目结构) |
+<p align="center">
+  <a href="#english-version"><img src="https://img.shields.io/badge/lang-English-blue" alt="English"></a>
+  <a href="#中文说明"><img src="https://img.shields.io/badge/lang-中文-red" alt="中文"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+  <a href="https://github.com/VirgoLeo1/openclaw-memory-tree"><img src="https://img.shields.io/badge/version-3.0-red.svg" alt="Version"></a>
+</p>
 
 ---
 
@@ -27,7 +20,7 @@
 
 ### 🚀 Overview
 
-Memory Tree is a **living knowledge base** designed for AI agents. It uses vector embeddings (ChromaDB) to store, retrieve, and evolve memories, errors, and skills dynamically.
+**VirgoLiant Memory Tree** is a **living knowledge base** designed for AI agents. It uses vector embeddings (ChromaDB) to store, retrieve, and evolve memories, errors, and skills dynamically.
 
 Unlike traditional note-taking apps, Memory Tree implements:
 - **Dynamic Heat Decay**: Memories fade over time unless reinforced.
@@ -71,7 +64,7 @@ node src/index.js status
 ### 🏗️ Project Structure
 
 ```text
-openclaw-memory-tree/
+virgoliant-memory-tree/
 ├── src/                 # Core logic (Heat, Vector Store, Loader)
 ├── scripts/             # Utilities (Backup, Scan, Maintenance)
 ├── skills/              # Agent skill modules
@@ -89,7 +82,7 @@ openclaw-memory-tree/
 
 ### 🚀 概述
 
-记忆树是一个为 AI Agent 设计的**动态知识库**。它使用向量嵌入（ChromaDB）来动态存储、检索和演化记忆、错误与技能。
+**VirgoLiant Memory Tree** 是一个为 AI Agent 设计的**动态知识库**。它使用向量嵌入（ChromaDB）来动态存储、检索和演化记忆、错误与技能。
 
 与传统笔记不同，记忆树实现了：
 - **动态热度衰减**：记忆若不强化会随时间自然消退。
@@ -133,7 +126,7 @@ node src/index.js status
 ### 🏗️ 项目结构
 
 ```text
-openclaw-memory-tree/
+virgoliant-memory-tree/
 ├── src/                 # 核心逻辑 (热度、向量存储、加载器)
 ├── scripts/             # 工具脚本 (备份、扫描、维护)
 ├── skills/              # Agent 技能模块
@@ -152,7 +145,7 @@ openclaw-memory-tree/
 We welcome contributions! Please follow these steps:
 欢迎贡献！请遵循以下步骤：
 
-1. Fork the repository /  Fork 本仓库
+1. Fork the repository / Fork 本仓库
 2. Create your feature branch / 创建功能分支 (`git checkout -b feature/AmazingFeature`)
 3. Commit your changes / 提交更改 (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch / 推送到分支 (`git push origin feature/AmazingFeature`)
@@ -162,15 +155,11 @@ We welcome contributions! Please follow these steps:
 
 ## 📜 License / 许可证
 
-MIT © 2026 Peak (峰哥)
+MIT © 2026 **VirgoLiant**
 
 ---
 
-<div align="center">
-
-**Made with ❤️ by Peak**  
-**Memory Tree — Where memories grow.**
-
-[⬆️ Back to top](#-openclaw-memory-tree)
-
-</div>
+<p align="center">
+  <strong>Made with ❤️ by VirgoLiant</strong><br>
+  <em>VirgoLiant Memory Tree — Where memories grow.</em>
+</p>
