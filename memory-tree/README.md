@@ -1,9 +1,8 @@
-# 🌳 OpenClaw Memory Tree v3.0 (记忆树)
+# 🌳 OpenClaw Memory Tree
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/version-3.0-red.svg)](https://github.com/VirgoLeo1/openclaw-memory-tree)
 [![ChromaDB](https://img.shields.io/badge/vector-ChromaDB-blue.svg)](https://www.trychroma.com/)
-[![Agent](https://img.shields.io/badge/Agent-Li%20Xin-orange)](https://github.com/VirgoLeo1/openclaw-memory-tree)
 
 > **让记忆不再是存储，而是生长。**  
 > *Memory is not just storage — it's growth.*
@@ -19,7 +18,7 @@
 | :--- | :--- |
 | [🚀 Overview](#-english-version) | [🚀 概述](#-中文说明) |
 | [📦 Installation](#-installation) | [📦 安装指南](#-安装指南) |
-| [🔮 Case Study](#-real-world-case-study) | [🔮 实战案例](#-实战案例演示) |
+| [🔥 Core Concepts](#-core-concepts) | [🔥 核心概念](#-核心概念) |
 | [🏗️ Architecture](#-project-structure) | [🏗️ 项目结构](#-项目结构) |
 
 ---
@@ -28,55 +27,59 @@
 
 ### 🚀 Overview
 
-Memory Tree v3.0 is not just a note-taking tool; it's a **living knowledge base**. It uses vector embeddings (ChromaDB) to store, retrieve, and evolve your memories, errors, and skills.
+Memory Tree is a **living knowledge base** designed for AI agents. It uses vector embeddings (ChromaDB) to store, retrieve, and evolve memories, errors, and skills dynamically.
 
-#### ✨ Key Features
-
-- **🧠 Vector Search**: Semantic retrieval using ChromaDB & nomic-embed-text.
-- **🔄 Self-Evolution**: Auto-logs errors/corrections to `40-EVOLUTION-LOG/`.
-- **🔒 Privacy First**: Sensitive data strictly local & git-ignored.
-- **🤖 Agent Powered**: Integrated with **"Li Xin"** for advanced destiny analysis.
-- **🔥 Dynamic Heat**: Memories decay; only meaningful interactions boost relevance.
+Unlike traditional note-taking apps, Memory Tree implements:
+- **Dynamic Heat Decay**: Memories fade over time unless reinforced.
+- **Confidence Tracking**: Distinguishes between verified facts and speculative inferences.
+- **Echo Chamber Protection**: Prevents high-risk unverified claims from gaining traction.
+- **Agent Agnostic**: Works with any OpenClaw-compatible agent.
 
 ### 📦 Installation
 
+#### Prerequisites
+- Node.js >= 18
+- Python 3.8+ (for ChromaDB)
+- OpenClaw Environment
+
+#### Quick Start
 ```bash
 # 1. Clone
 git clone https://github.com/VirgoLeo1/openclaw-memory-tree.git
 cd openclaw-memory-tree
 
-# 2. Install Deps
+# 2. Install Dependencies
 npm install
 pip install chromadb sentence-transformers
 
-# 3. Init
+# 3. Initialize
 node src/index.js init
+
+# 4. Verify
+node src/index.js status
 ```
 
-### 🔮 Real-World Case Study: "Li Xin" Agent
+### 🔥 Core Concepts
 
-> *Demonstrating the system's analytical power via the integrated "Li Xin" agent.*
-
-**Subject**: Male, 2005 (Yi-You), Shen Month, Gui-Wei Day, **Wu-Wu Hour**.
-
-| Category | Prediction | Verification |
-| :--- | :--- | :--- |
-| **Appearance** | Square chin, Right arm mark | ✅ Confirmed |
-| **Personality** | Outwardly calm, Inwardly stubborn | ✅ Accurate |
-| **Life Event** | Moved 2018 (Tianjin→Dezhou) | ✅ Correct |
-| **Injury** | Head injury (Metal cage) | ✅ Validated |
+1. **Dynamic Heat**: Every memory has a heat score that decays daily (`DECAY_RATE = 0.95`). Only meaningful interactions (producing actions) boost heat.
+2. **Confidence Levels**:
+   - `High`: Verified by human or strong evidence chain.
+   - `Medium`: Has source but unverified.
+   - `Low`: Inference or speculation (decays 2x faster).
+3. **Privacy First**: Sensitive directories (`memory/`, `30-VAULT.md`) are git-ignored by default.
 
 ### 🏗️ Project Structure
 
 ```text
 openclaw-memory-tree/
-├── src/                 # Core logic (Heat, Vector, Loader)
-├── scripts/             # Utilities (Backup, Scan, Post)
-├── skills/              # Agent skills (Li Xin, Search, etc.)
-├── memory/              # [Git-Ignored] User data
-│   ├── 00-CORE.md
-│   ├── 30-VAULT.md
-│   └── 40-EVOLUTION-LOG/
+├── src/                 # Core logic (Heat, Vector Store, Loader)
+├── scripts/             # Utilities (Backup, Scan, Maintenance)
+├── skills/              # Agent skill modules
+├── memory/              # [Git-Ignored] User data storage
+│   ├── 00-CORE.md       # Core memory index
+│   ├── 01-DAILY/        # Daily logs
+│   ├── 30-VAULT.md      # Sensitive secrets
+│   └── 40-EVOLUTION-LOG/# Errors & corrections
 └── docs/                # Documentation
 ```
 
@@ -86,18 +89,22 @@ openclaw-memory-tree/
 
 ### 🚀 概述
 
-记忆树 v3.0 不仅仅是一个笔记工具，它是一个**有生命的知识库**。它使用向量嵌入（ChromaDB）来存储、检索和演化你的记忆、错误和技能。
+记忆树是一个为 AI Agent 设计的**动态知识库**。它使用向量嵌入（ChromaDB）来动态存储、检索和演化记忆、错误与技能。
 
-#### ✨ 核心特性
-
-- **🧠 向量搜索**: 使用 ChromaDB 进行语义化检索。
-- **🔄 自我演化**: 自动记录错误和纠正到 `40-EVOLUTION-LOG/`。
-- **🔒 隐私优先**: 敏感数据严格本地存储且 Git 忽略。
-- **🤖 Agent 驱动**: 集成 **"李馨"** 进行高级命理分析。
-- **🔥 动态热度**: 记忆随时间衰减，只有有意义的互动才提升热度。
+与传统笔记不同，记忆树实现了：
+- **动态热度衰减**：记忆若不强化会随时间自然消退。
+- **置信度追踪**：区分已验证事实与推测性推断。
+- **回音室防护**：防止高风险未验证信息获得高热度。
+- **Agent 无关**：兼容任何 OpenClaw 代理。
 
 ### 📦 安装指南
 
+#### 前置条件
+- Node.js >= 18
+- Python 3.8+ (用于 ChromaDB)
+- OpenClaw 环境
+
+#### 快速开始
 ```bash
 # 1. 克隆
 git clone https://github.com/VirgoLeo1/openclaw-memory-tree.git
@@ -109,32 +116,32 @@ pip install chromadb sentence-transformers
 
 # 3. 初始化
 node src/index.js init
+
+# 4. 验证
+node src/index.js status
 ```
 
-### 🔮 实战案例演示
+### 🔥 核心概念
 
-> *展示“李馨”Agent 的深度分析能力（脱敏案例）。*
-
-**对象**: 男，2005 年 (乙酉) 申月 癸未日 **戊午时**。
-
-| 类别 | 推断结果 | 验证状态 |
-| :--- | :--- | :--- |
-| **外貌** | 下巴方正，右臂有胎记 | ✅ 已确认 |
-| **性格** | 外表随和，内心极有主见 | ✅ 准确 |
-| **人生节点** | 2018 年从天津转学回德州 | ✅ 正确 |
-| **伤病** | 头顶被金属笼子磕伤 | ✅ 已验证 |
+1. **动态热度**：每个记忆都有热度值，每日自然衰减 (`DECAY_RATE = 0.95`)。只有产生实际操作的交互才会提升热度。
+2. **置信度等级**：
+   - `High`: 经人类确认或有强证据链。
+   - `Medium`: 有来源但未验证。
+   - `Low`: 推断或推测（衰减速度 2 倍）。
+3. **隐私优先**：敏感目录（`memory/`, `30-VAULT.md`）默认被 Git 忽略。
 
 ### 🏗️ 项目结构
 
 ```text
 openclaw-memory-tree/
-├── src/                 # 核心逻辑 (热度、向量、加载)
-├── scripts/             # 工具脚本 (备份、扫描、发布)
-├── skills/              # Agent 技能 (李馨、搜索等)
-├── memory/              # [Git 忽略] 用户数据
-│   ├── 00-CORE.md
-│   ├── 30-VAULT.md
-│   └── 40-EVOLUTION-LOG/
+├── src/                 # 核心逻辑 (热度、向量存储、加载器)
+├── scripts/             # 工具脚本 (备份、扫描、维护)
+├── skills/              # Agent 技能模块
+├── memory/              # [Git 忽略] 用户数据存储
+│   ├── 00-CORE.md       # 核心记忆索引
+│   ├── 01-DAILY/        # 每日日志
+│   ├── 30-VAULT.md      # 敏感机密
+│   └── 40-EVOLUTION-LOG/# 错误与纠正记录
 └── docs/                # 文档
 ```
 
@@ -142,25 +149,28 @@ openclaw-memory-tree/
 
 ## 🤝 Contributing / 贡献
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+We welcome contributions! Please follow these steps:
+欢迎贡献！请遵循以下步骤：
+
+1. Fork the repository /  Fork 本仓库
+2. Create your feature branch / 创建功能分支 (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes / 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch / 推送到分支 (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request / 发起 Pull Request
 
 ---
 
 ## 📜 License / 许可证
 
-MIT © 2026 Peak (峰哥) & Li Xin (李馨)
+MIT © 2026 Peak (峰哥)
 
 ---
 
 <div align="center">
 
-**Made with ❤️ by Peak & Li Xin**  
-**Memory Tree v3.0 — Where memories grow.**
+**Made with ❤️ by Peak**  
+**Memory Tree — Where memories grow.**
 
-[⬆️ Back to top](#-openclaw-memory-tree-v30-记忆树)
+[⬆️ Back to top](#-openclaw-memory-tree)
 
 </div>
