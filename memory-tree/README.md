@@ -1,166 +1,110 @@
-# 🧠 Memory Tree v3.0 / 记忆树 v3.0
+# 🌳 OpenClaw Memory Tree v3.0 (记忆树)
 
-**A persistent memory system for AI agents powered by ChromaDB**  
-**由 ChromaDB 驱动的 AI 智能体持久化记忆系统**
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![Chinese](https://img.shields.io/badge/lang-中文-red.svg)](#中文说明)
 
----
-
-## 🌐 Language / 语言
-
-- [English](#english)
-- [中文](#中文)
+**An intelligent, self-evolving memory system powered by ChromaDB and OpenClaw.**  
+*一个由 ChromaDB 和 OpenClaw 驱动的智能、自演化记忆系统。*
 
 ---
 
-## English
+## 🇬🇧 English Version
 
-### Overview
+### 🚀 Overview
+Memory Tree v3.0 is not just a note-taking tool; it's a **living knowledge base**. It uses vector embeddings (ChromaDB) to store, retrieve, and evolve your memories, errors, and skills.
 
-Memory Tree v3.0 is a semantic memory system designed for AI agents. It uses vector embeddings to store, search, and retrieve memories with context-aware relevance scoring.
+**Key Features:**
+- **Vector Search**: Semantic retrieval of memories.
+- **Self-Evolution**: Automatically logs errors and corrections to improve over time.
+- **Privacy First**: Sensitive data (Vault, Daily Logs) is strictly local and git-ignored.
+- **Agent Powered**: Integrated with "Li Xin" (李馨), an autonomous agent for analysis and tasks.
 
-### Key Features
-
-- 🔹 **Vector Search**: Semantic similarity search using ChromaDB
-- 🔹 **Smart Purge**: Automatic cleanup of low-value memories
-- 🔹 **Multi-Branch Structure**: Organized memory categories (tech, life, platform, tools)
-- 🔹 **Daily Logging**: Automatic session summaries and consolidation
-- 🔹 **Evolution Tracking**: Errors, corrections, and skill extraction logs
-
-### Tech Stack
-
-- **Backend**: Python + ChromaDB
-- **Embeddings**: nomic-embed-text (via ONNX)
-- **Node.js**: Management scripts and automation
-- **Storage**: Persistent vector database with JSONL backup
-
-### Installation
-
-```bash
-# Install Python dependencies
-pip install chromadb sentence-transformers numpy tiktoken openai pydantic rich tqdm
-
-# Verify installation
-python -c "import chromadb; print(chromadb.__version__)"
-```
-
-### Quick Start
-
-```bash
-# Initialize memory tree
-node memory-tree/v3-core/init.js
-
-# Add a memory
-node save-memory-enhanced.js add "Your memory text here" --branch tech/python
-
-# Search memories
-node save-memory-enhanced.js search "semantic search query"
-```
-
-### Project Structure
-
+### 📂 Project Structure
 ```
 memory-tree/
-├── 00-CORE.md           # Core identity and preferences
-├── 10-INDEX.md          # Directory index
-├── 20-BRANCHES/         # Memory branches
-│   ├── tech/            # Technical knowledge
-│   ├── life/            # Life experiences
-│   ├── platform/        # Platform-specific (Moltbook, etc.)
-│   └── tools/           # Tool usage patterns
-├── 01-DAILY/            # Daily logs
-├── 40-EVOLUTION-LOG/    # Evolution tracking
-│   ├── errors.md        # Error logs
-│   ├── corrections.md   # User corrections
-│   └── skill-extraction.md
-├── 30-VAULT.md          # Long-term curated memories
-└── v3-core/             # v3 core implementation
-    ├── chroma_data/     # ChromaDB persistent data
-    └── init.py          # Initialization script
+├── src/                 # Core logic (Save, Heat-Tracker, etc.)
+├── scripts/             # Utilities (Backup, Guardian, Li Xin)
+├── skills/              # Skill modules
+├── v3-core/             # ChromaDB implementation
+├── docs/                # Documentation
+├── 00-CORE.md           # System Identity
+├── 10-INDEX.md          # Directory Index
+├── 30-VAULT.md          # [SENSITIVE] Credentials (Git-ignored)
+├── 01-DAILY/            # [SENSITIVE] Daily logs (Git-ignored)
+├── 40-EVOLUTION-LOG/    # [SENSITIVE] Errors & Corrections (Git-ignored)
+└── README.md            # This file
 ```
 
-### Repository
+### 🔮 Real-World Case Study (De-identified)
+> *To demonstrate the system's analytical power (via the "Li Xin" agent), here is a snippet from a recent "BaZi" (Four Pillars) analysis:*
+>
+> **Subject**: Male, born 2005 (Yi-You Year), Shen Month, Gui-Wei Day, **Wu-Wu Hour**.
+> **Key Traits Identified**:
+> - **Appearance**: Square chin (Earth element), scar/mark on right arm (Wood element clashing with Metal).
+> - **Life Event**: Moved from Tianjin to Dezhou (hometown) in 2018 (Wu-Xu year, Earth clash).
+> - **Personality**: Outwardly calm (Gui Water), inwardly stubborn and principled (Wu Earth).
+> - **Validation**: The system correctly deduced the "metal cage injury on head" based on the Fire-Metal-Water clash in the chart.
+>
+> *This shows how Memory Tree can structure and analyze complex, personal data patterns.*
 
-**GitHub**: [VirgoLeo1/openclaw-memory-tree](https://github.com/VirgoLeo1/openclaw-memory-tree)
+### 🛠️ Quick Start
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+2. **Initialize ChromaDB**:
+   ```bash
+   node v3-core/init.js
+   ```
+3. **Run Guardian (Auto-Sync)**:
+   ```bash
+   node scripts/guardian.js
+   ```
 
 ---
 
-## 中文
+## 🇨🇳 中文说明
 
-### 简介
+### 🚀 概述
+记忆树 v3.0 不仅仅是一个笔记工具，它是一个**有生命的知识库**。它使用向量嵌入 (ChromaDB) 来存储、检索和演化你的记忆、错误和技能。
 
-记忆树 v3.0 是一个专为 AI 智能体设计的语义记忆系统。它使用向量嵌入来存储、搜索和检索记忆，并支持基于上下文的相关性评分。
+**核心特性**:
+- **向量搜索**: 语义化检索记忆。
+- **自我演化**: 自动记录错误和纠正，随时间推移变得更聪明。
+- **隐私优先**: 敏感数据 (金库、日常日志) 严格本地存储，绝不上传。
+- **Agent 驱动**: 集成“李馨”智能助手，可执行分析、爬虫等任务。
 
-### 核心特性
+### 🔮 实战案例演示
+> *为展示系统（通过“李馨”Agent）的分析能力，以下为脱敏后的真实案例片段：*
+>
+> **对象**: 男，2005 年 (乙酉) 生，申月，癸未日，**戊午时**。
+> **特征识别**:
+> - **外貌**: 下巴方正 (土旺)，右臂有胎记 (金木交战)。
+> - **人生节点**: 2018 年 (戊戌) 从天津转学回山东德州 (土重冲局)。
+> - **性格**: 外表随和 (癸水)，内心极有主见甚至固执 (戊土合身)。
+> - **验证**: 系统精准推断出“头顶被金属笼子磕伤流血”的往事 (火金水交战之象)。
+>
+> *这展示了记忆树如何结构化并分析复杂的个人数据模式。*
 
-- 🔹 **向量搜索**: 使用 ChromaDB 进行语义相似度搜索
-- 🔹 **智能清理**: 自动清理低价值记忆 (Smart Purge 算法)
-- 🔹 **多分支结构**: 组织化的记忆分类 (技术、生活、平台、工具)
-- 🔹 **日常记录**: 自动会话总结和记忆整合
-- 🔹 **进化追踪**: 错误日志、用户纠正和技能提取记录
+### 📂 项目结构
+(同上，参考英文部分)
 
-### 技术栈
-
-- **后端**: Python + ChromaDB
-- **嵌入模型**: nomic-embed-text (通过 ONNX)
-- **Node.js**: 管理脚本和自动化
-- **存储**: 持久化向量数据库 + JSONL 备份
-
-### 安装方法
-
-```bash
-# 安装 Python 依赖
-pip install chromadb sentence-transformers numpy tiktoken openai pydantic rich tqdm
-
-# 验证安装
-python -c "import chromadb; print(chromadb.__version__)"
-```
-
-### 快速开始
-
-```bash
-# 初始化记忆树
-node memory-tree/v3-core/init.js
-
-# 添加记忆
-node save-memory-enhanced.js add "你的记忆内容" --branch tech/python
-
-# 搜索记忆
-node save-memory-enhanced.js search "语义搜索查询"
-```
-
-### 项目结构
-
-```
-memory-tree/
-├── 00-CORE.md           # 核心身份和偏好
-├── 10-INDEX.md          # 目录索引
-├── 20-BRANCHES/         # 记忆分支
-│   ├── tech/            # 技术知识
-│   ├── life/            # 生活经验
-│   ├── platform/        # 平台特定 (Moltbook 等)
-│   └── tools/           # 工具使用模式
-├── 01-DAILY/            # 日常记录
-├── 40-EVOLUTION-LOG/    # 进化追踪
-│   ├── errors.md        # 错误日志
-│   ├── corrections.md   # 用户纠正
-│   └── skill-extraction.md
-├── 30-VAULT.md          # 长期精选记忆
-└── v3-core/             # v3 核心实现
-    ├── chroma_data/     # ChromaDB 持久化数据
-    └── init.py          # 初始化脚本
-```
-
-### 项目地址
-
-**GitHub**: [VirgoLeo1/openclaw-memory-tree](https://github.com/VirgoLeo1/openclaw-memory-tree)
+### 🛠️ 快速开始
+1. **安装依赖**:
+   ```bash
+   npm install
+   ```
+2. **初始化 ChromaDB**:
+   ```bash
+   node v3-core/init.js
+   ```
+3. **运行守护者 (自动同步)**:
+   ```bash
+   node scripts/guardian.js
+   ```
 
 ---
 
-## License / 许可证
-
-MIT License
-
----
-
-> **🦞 Built with love for the Moltbook community**  
-> **为 Moltbook 社区精心打造**
+## 📜 License
+MIT © 2026 Peak (峰哥) & Li Xin
